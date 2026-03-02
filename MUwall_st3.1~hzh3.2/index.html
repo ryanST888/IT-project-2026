@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUwall - 香港都会大学校园论坛</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>MUwall</h1>
+                <span>香港都会大学校园论坛</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active" data-i18n="nav_home">首页</a>
+                <a href="#categories" data-i18n="nav_categories">分类</a>
+                <a href="#search" data-i18n="nav_search">搜索</a>
+                <a href="#profile" data-i18n="nav_profile">个人中心</a>
+                <button class="btn-primary" id="login-btn" data-i18n="nav_login">登录/注册</button>
+                <div class="lang-dropdown">
+                    <button class="btn-secondary lang-btn" id="lang-toggle">English</button>
+                    <div class="lang-dropdown-content" id="lang-dropdown">
+                        <a href="#" data-lang="zh-cn">简体中文</a>
+                        <a href="#" data-lang="zh">繁体中文</a>
+                        <a href="#" data-lang="en">English</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 登录/注册模态框 -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="login">登录</button>
+                <button class="tab-btn" data-tab="register">注册</button>
+            </div>
+            <div class="tab-content" id="login-tab">
+                <h3>用户登录</h3>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>账号</label>
+                        <input type="text" placeholder="请输入账号">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" placeholder="请输入密码">
+                    </div>
+                    <button type="submit" class="btn-primary">登录</button>
+                </form>
+            </div>
+            <div class="tab-content" id="register-tab" style="display: none;">
+                <h3>用户注册</h3>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label>账号</label>
+                        <input type="text" placeholder="请输入账号">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" placeholder="请输入密码">
+                    </div>
+                    <div class="form-group">
+                        <label>确认密码</label>
+                        <input type="password" placeholder="请确认密码">
+                    </div>
+                    <div class="form-group">
+                        <label>身份</label>
+                        <select>
+                            <option value="student">学生</option>
+                            <option value="teacher">教师</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">注册</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 发布帖子按钮 -->
+    <div class="create-post-btn">
+        <button id="create-post">
+            <i class="fas fa-plus"></i>
+            <span data-i18n="btn_create_post">发布帖子</span>
+        </button>
+    </div>
+
+    <!-- 发布帖子模态框 -->
+    <div class="modal" id="post-modal">
+        <div class="modal-content post-modal-content">
+            <span class="close">&times;</span>
+            <h3>发布帖子</h3>
+            <form id="post-form">
+                <div class="form-group">
+                    <label>帖子标题</label>
+                    <input type="text" placeholder="请输入帖子标题">
+                </div>
+                <div class="form-group">
+                    <label>帖子分类</label>
+                    <select>
+                        <option value="campus-share">校园分享</option>
+                        <option value="study-help">学习求助</option>
+                        <option value="daily-life">生活日常</option>
+                        <option value="campus-news">校园资讯</option>
+                        <option value="qna">提问解答</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>帖子内容</label>
+                    <textarea placeholder="请输入帖子内容"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>上传图片</label>
+                    <input type="file" multiple accept="image/*">
+                </div>
+                <button type="submit" class="btn-primary">发布</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <main class="container">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 data-i18n="side_categories">分类导航</h3>
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> <span data-i18n="cat_all">全部</span></a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> <span data-i18n="cat_share">校园分享</span></a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> <span data-i18n="cat_help">学习求助</span></a></li>
+                    <li><a href="#"><i class="fas fa-coffee"></i> <span data-i18n="cat_life">生活日常</span></a></li>
+                    <li><a href="#"><i class="fas fa-bullhorn"></i> <span data-i18n="cat_news">校园资讯</span></a></li>
+                    <li><a href="#"><i class="fas fa-comments"></i> <span data-i18n="cat_qna">提问解答</span></a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h3 data-i18n="side_hot">热门话题</h3>
+                <ul>
+                    <li><a href="#" data-i18n="hot_1">期末考试复习资料分享</a></li>
+                    <li><a href="#" data-i18n="hot_2">校园活动报名通知</a></li>
+                    <li><a href="#" data-i18n="hot_3">寻找自习室搭档</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 中间内容区 -->
+        <section class="content">
+            <!-- 筛选栏 -->
+            <div class="filter-bar">
+                <button class="filter-btn active">最新</button>
+                <button class="filter-btn">热门</button>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索帖子...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <!-- 帖子列表 -->
+            <div class="post-list">
+                <!-- 帖子1 -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="user-info">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=student%20avatar%20portrait%20friendly%20smile&image_size=square" alt="用户头像">
+                            <div>
+                                <h4>小明同学</h4>
+                                <span>2小时前 · 校园分享</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3>期末考试复习资料分享</h3>
+                        <p>刚整理了一份期末考试的复习资料，包括重点知识点和历年真题，希望对大家有所帮助。需要的同学可以在评论区留言，我会私发给你们。</p>
+                        <div class="post-images">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=study%20materials%20books%20notes%20desk&image_size=landscape_4_3" alt="复习资料">
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn"><i class="fas fa-thumbs-up"></i> <span>42</span></button>
+                        <button class="action-btn"><i class="fas fa-comment"></i> <span>18</span></button>
+                        <button class="action-btn"><i class="fas fa-share"></i> <span>分享</span></button>
+                    </div>
+                    <div class="post-comments">
+                        <div class="comment">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=student%20avatar%20portrait%20glasses&image_size=square" alt="评论用户头像">
+                            <div class="comment-content">
+                                <h5>小红</h5>
+                                <span class="comment-time">1小时前</span>
+                                <p>感谢分享！麻烦发我一份，谢谢～</p>
+                                <div class="comment-actions">
+                                    <button class="reply-btn">回复</button>
+                                    <button class="like-btn">点赞</button>
+                                    <span class="like-count">5</span>
+                                </div>
+                                <div class="reply-input" style="display: none;">
+                                    <input type="text" placeholder="回复评论...">
+                                    <button>发送</button>
+                                </div>
+                                <div class="replies" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="comment-input">
+                            <input type="text" placeholder="写下你的评论...">
+                            <button>发送</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 帖子2 -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="user-info">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=teacher%20avatar%20portrait%20professional&image_size=square" alt="用户头像">
+                            <div>
+                                <h4>李老师</h4>
+                                <span>4小时前 · 校园资讯</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3>关于举办校园科技节的通知</h3>
+                        <p>学校将于下周末举办校园科技节，欢迎各位同学积极参与。活动包括机器人展示、科技创新大赛、科普讲座等多个环节，有兴趣的同学可以到学生会报名。</p>
+                        <div class="post-images">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=campus%20science%20festival%20students%20activities&image_size=landscape_4_3" alt="科技节">
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn"><i class="fas fa-thumbs-up"></i> <span>68</span></button>
+                        <button class="action-btn"><i class="fas fa-comment"></i> <span>25</span></button>
+                        <button class="action-btn"><i class="fas fa-share"></i> <span>分享</span></button>
+                    </div>
+                    <div class="post-comments">
+                        <div class="comment">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=student%20avatar%20portrait%20excited&image_size=square" alt="评论用户头像">
+                            <div class="comment-content">
+                                <h5>小张</h5>
+                                <span class="comment-time">3小时前</span>
+                                <p>老师，科技创新大赛有什么具体要求吗？</p>
+                                <div class="comment-actions">
+                                    <button class="reply-btn">回复</button>
+                                    <button class="like-btn">点赞</button>
+                                    <span class="like-count">3</span>
+                                </div>
+                                <div class="reply-input" style="display: none;">
+                                    <input type="text" placeholder="回复评论...">
+                                    <button>发送</button>
+                                </div>
+                                <div class="replies" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=teacher%20avatar%20portrait%20professional&image_size=square" alt="评论用户头像">
+                            <div class="comment-content">
+                                <h5>李老师</h5>
+                                <span class="comment-time">3小时前</span>
+                                <p>@小张 科技创新大赛需要提交项目计划书，内容包括项目背景、创新点、实施方案等，具体要求会在报名后发给大家。</p>
+                                <div class="comment-actions">
+                                    <button class="reply-btn">回复</button>
+                                    <button class="like-btn">点赞</button>
+                                    <span class="like-count">8</span>
+                                </div>
+                                <div class="reply-input" style="display: none;">
+                                    <input type="text" placeholder="回复评论...">
+                                    <button>发送</button>
+                                </div>
+                                <div class="replies" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="comment-input">
+                            <input type="text" placeholder="写下你的评论...">
+                            <button>发送</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 帖子3 -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="user-info">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=student%20avatar%20portrait%20casual&image_size=square" alt="用户头像">
+                            <div>
+                                <h4>小王</h4>
+                                <span>6小时前 · 学习求助</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h3>高等数学微积分部分求助</h3>
+                        <p>最近在复习高等数学，微积分部分有些地方不太理解，特别是定积分的应用和多重积分的计算，有没有同学可以帮忙解答一下？或者推荐一些好的学习资源？</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn"><i class="fas fa-thumbs-up"></i> <span>35</span></button>
+                        <button class="action-btn"><i class="fas fa-comment"></i> <span>20</span></button>
+                        <button class="action-btn"><i class="fas fa-share"></i> <span>分享</span></button>
+                    </div>
+                    <div class="post-comments">
+                        <div class="comment">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=student%20avatar%20portrait%20smart&image_size=square" alt="评论用户头像">
+                            <div class="comment-content">
+                                <h5>小李</h5>
+                                <span class="comment-time">5小时前</span>
+                                <p>我有一些微积分的学习笔记，明天可以借给你看，另外推荐你看MIT的微积分公开课程，讲得很清楚。</p>
+                                <div class="comment-actions">
+                                    <button class="reply-btn">回复</button>
+                                    <button class="like-btn">点赞</button>
+                                    <span class="like-count">6</span>
+                                </div>
+                                <div class="reply-input" style="display: none;">
+                                    <input type="text" placeholder="回复评论...">
+                                    <button>发送</button>
+                                </div>
+                                <div class="replies" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="comment-input">
+                            <input type="text" placeholder="写下你的评论...">
+                            <button>发送</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="profile-section" id="profile-view" style="display: none; flex: 1; min-width: 0;">
+            <div class="profile-header">
+                <div class="profile-cover">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=abstract%20data%20science%20neural%20network%20banner&image_size=landscape_16_9" alt="Cover Photo">
+                </div>
+                <div class="profile-avatar-container">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=student%20avatar%20portrait%20friendly%20smile&image_size=square" class="profile-avatar" alt="User Avatar">
+                    <button class="btn-secondary edit-profile-btn" data-i18n="btn_edit_profile">編輯個人資料</button>
+                </div>
+                <div class="profile-info">
+                    <h2 id="profile-name">小明同学</h2>
+                    <p id="profile-bio">Data Science & Artificial Intelligence major at HKMU. Building intelligent systems.</p>
+                    <div class="profile-stats">
+                        <span><strong>12</strong> <span data-i18n="stat_following">正在關注</span></span>
+                        <span><strong>48</strong> <span data-i18n="stat_followers">跟隨者</span></span>
+                    </div>
+                </div>
+                <div class="profile-tabs">
+                    <button class="active" data-i18n="tab_posts">帖子</button>
+                    <button data-i18n="tab_replies">回覆</button>
+                    <button data-i18n="tab_likes">喜歡</button>
+                </div>
+            </div>
+            
+            <div class="post-list" id="profile-post-list">
+                </div>
+        </section>
+        <!-- 右侧边栏 -->
+        <aside class="sidebar right-sidebar">
+            <div class="sidebar-section">
+                <h3>用户信息</h3>
+                <div class="user-card">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=default%20user%20avatar%20friendly&image_size=square" alt="用户头像">
+                    <h4>未登录</h4>
+                    <p>登录后查看个人信息</p>
+                    <button class="btn-secondary">登录</button>
+                </div>
+            </div>
+            <div class="sidebar-section">
+                <h3>活跃用户</h3>
+                <ul class="active-users">
+                    <li>
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=student%20avatar%20portrait%20smile&image_size=square" alt="用户头像">
+                        <span>小明同学</span>
+                    </li>
+                    <li>
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=teacher%20avatar%20portrait%20professional&image_size=square" alt="用户头像">
+                        <span>李老师</span>
+                    </li>
+                    <li>
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=student%20avatar%20portrait%20glasses&image_size=square" alt="用户头像">
+                        <span>小红</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MUwall</h3>
+                    <p>香港都会大学校园论坛，连接你我他</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">分类</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>联系我们</h4>
+                    <p>邮箱：contact@muwall.com</p>
+                    <p>电话：1234567890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MUwall. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <script src="dataLibrary.js"></script>
+
+    <script src="router.js"></script>
+
+    <script src="components.js"></script>
+
+    <script src="main.js"></script>
+</body>
+</html>
+</body>
+</html>
