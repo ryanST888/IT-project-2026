@@ -1,0 +1,26 @@
+/* 侧边栏样式 */
+.sidebar { width: 250px; background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.right-sidebar { width: 280px; }
+.sidebar-section { margin-bottom: 30px; }
+.sidebar-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 15px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+.sidebar ul { list-style: none; }
+.sidebar ul li { margin-bottom: 10px; }
+.sidebar ul li a { text-decoration: none; color: #666; font-size: 14px; transition: color 0.3s ease; display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 4px; }
+.sidebar ul li a:hover, .sidebar ul li a.active { color: #1e40af; background-color: #f0f7ff; }
+
+/* 用户卡片 */
+.user-card { text-align: center; padding: 20px; background-color: #f9f9f9; border-radius: 8px; }
+.user-card img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; }
+.user-card h4 { margin-bottom: 5px; color: #333; }
+.user-card p { font-size: 14px; color: #666; margin-bottom: 15px; }
+
+/* 活跃用户 */
+.active-users li { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+.active-users li img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.active-users li span { font-size: 14px; color: #666; }
+
+/* 侧边栏响应式 */
+@media (max-width: 1200px) {
+    .sidebar, .right-sidebar { width: 100%; }
+    .right-sidebar { order: -1; }
+}
