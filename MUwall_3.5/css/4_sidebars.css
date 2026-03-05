@@ -1,0 +1,99 @@
+/* 侧边栏样式 */
+.right-sidebar { width: 280px; background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.sidebar-section { margin-bottom: 30px; }
+.sidebar-section h3 { font-size: 16px; font-weight: 600; margin-bottom: 15px; color: #333; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+.sidebar ul { list-style: none; }
+.sidebar ul li { margin-bottom: 10px; }
+.sidebar ul li a { text-decoration: none; color: #666; font-size: 14px; transition: color 0.3s ease; display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 4px; }
+.sidebar ul li a:hover, .sidebar ul li a.active { color: #1e40af; background-color: #f0f7ff; }
+
+/* 用户卡片 */
+.user-card { text-align: center; padding: 20px; background-color: #f9f9f9; border-radius: 8px; }
+.user-card img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; }
+.user-card h4 { margin-bottom: 5px; color: #333; }
+.user-card p { font-size: 14px; color: #666; margin-bottom: 15px; }
+
+/* 活跃用户 */
+.active-users li { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+.active-users li img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+.active-users li span { font-size: 14px; color: #666; }
+
+/* 侧边栏响应式 */
+@media (max-width: 1200px) {
+    .right-sidebar { width: 100%; }
+}
+
+/* 右侧边栏在不同屏幕比例下的适配 */
+@media (aspect-ratio: 4/3) or (max-width: 1280px) {
+    .right-sidebar {
+        width: 220px;
+        padding: 16px;
+    }
+    .sidebar-section {
+        margin-bottom: 20px;
+    }
+    .sidebar-section h3 {
+        font-size: 14px;
+        margin-bottom: 12px;
+        padding-bottom: 6px;
+    }
+    .sidebar ul li a {
+        font-size: 13px;
+        padding: 5px 8px;
+    }
+    .user-card {
+        padding: 16px;
+    }
+    .user-card img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 8px;
+    }
+    .user-card h4 {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    .user-card p {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+@media (aspect-ratio: 16/10) or (min-width: 1440px) {
+    .right-sidebar {
+        width: 300px;
+        padding: 20px;
+    }
+}
+
+@media (aspect-ratio: 16/9) or (min-width: 1920px) {
+    .right-sidebar {
+        width: 320px;
+        padding: 24px;
+    }
+    .sidebar-section h3 {
+        font-size: 18px;
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+    }
+    .sidebar ul li a {
+        font-size: 15px;
+        padding: 8px 12px;
+    }
+    .user-card {
+        padding: 24px;
+    }
+    .user-card img {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 12px;
+    }
+    .user-card h4 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    .user-card p {
+        font-size: 14px;
+        margin-bottom: 18px;
+    }
+}
