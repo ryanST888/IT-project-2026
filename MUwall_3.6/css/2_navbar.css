@@ -1,0 +1,60 @@
+/* 导航栏样式 */
+.navbar { background-color: #7ab317; color: white; padding: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; width: 100%; }
+.navbar .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+
+/* 导航栏在不同屏幕比例下的适配 */
+@media (aspect-ratio: 4/3) or (max-width: 1280px) {
+    .navbar .container {
+        padding: 0 15px;
+    }
+    .nav-links {
+        gap: 10px;
+    }
+    .nav-links a {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+    .btn-primary {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (aspect-ratio: 16/10) or (min-width: 1440px) {
+    .navbar .container {
+        padding: 0 20px;
+    }
+}
+
+@media (aspect-ratio: 16/9) or (min-width: 1920px) {
+    .navbar .container {
+        padding: 0 30px;
+    }
+    .nav-links {
+        gap: 25px;
+    }
+    .nav-links a {
+        font-size: 16px;
+        padding: 6px 12px;
+    }
+}
+.logo h1 { font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+.logo span { font-size: 14px; opacity: 0.9; }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-links a { color: white; text-decoration: none; font-size: 16px; transition: all 0.3s ease; padding: 5px 10px; border-radius: 4px; }
+.nav-links a:hover, .nav-links a.active { background-color: rgba(255,255,255,0.2); }
+
+/* 语言下拉菜单样式 */
+.lang-btn { margin-left: 10px; background-color: transparent; border: 1px solid white; color: white; position: relative; }
+.lang-btn:hover { background-color: white; color: #7ab317; }
+.lang-dropdown { position: relative; display: inline-block; }
+.lang-dropdown-content { display: none; position: absolute; background-color: white; min-width: 120px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); z-index: 1000; right: 0; border-radius: 4px; overflow: hidden; }
+.lang-dropdown-content a { color: #333; padding: 10px 12px; text-decoration: none; display: block; font-size: 14px; transition: background-color 0.3s ease; }
+.lang-dropdown-content a:hover { background-color: #f0f0f0; }
+.lang-dropdown:hover .lang-dropdown-content { display: block; }
+
+/* 导航栏响应式 */
+@media (max-width: 768px) {
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 14px; }
+}
